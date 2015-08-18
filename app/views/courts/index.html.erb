@@ -3,7 +3,8 @@
 <table>
   <thead>
     <tr>
-      <th>Tipo de pista</th>
+      <th>Nombre</th>
+      <th>Tipo de pista</th>      
       <th colspan="10"></th>
     </tr>
   </thead>
@@ -11,8 +12,8 @@
   <tbody>
     <% @courts.each do |court| %>
       <tr>
-        <td><%= court.type %></td>
-        <td><%= court.number_of_courts %></td>
+        <td><%= court.name %></td>
+        <td><%= court.type_of_court %></td>
         <td><%= link_to 'Ver más', court %></td>
         <td><%= link_to 'Editar', edit_court_path(court) %></td>
         <td><%= link_to 'Eliminar', court, method: :delete, data: { confirm: '¿Seguro que quieres eliminarlo?' } %></td>

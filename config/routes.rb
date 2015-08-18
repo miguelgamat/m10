@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   resources:clubs
   resources:users
   resources:courts
+  resources:bookings
+  resources:memberships
 
 end

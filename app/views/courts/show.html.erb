@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @court.id %>
+</p>
+
+<p>
+  <strong>Tipo de pista:</strong>
+  <%= @court.type_of_court %>
+</p>
+
+
+<%= link_to 'Editar', edit_court_path(@court) %> |
+<%= link_to 'Volver', courts_path %>

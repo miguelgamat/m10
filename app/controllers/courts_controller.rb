@@ -32,6 +32,17 @@ class CourtsController < ApplicationController
     	end
 	end
 
+	def update
+		@court = Court.find(params[:id])
+		respond_to do |format|
+			if @court.update(court_params)
+				format.html { redirect_to @court, notice: 'Pista modificada satisfactoriamente.' }
+			else
+				format.html { render :edit }
+			end
+		end
+	end
+
 	def edit
 		@court = Court.find(params[:id])
 	end
@@ -39,7 +50,7 @@ class CourtsController < ApplicationController
 	private
 
 	def court_params
-		params.require(:court).permit(:name, :description)
+		params.require(:court).permit(:name, :type_of_court)
 	end
 
 end

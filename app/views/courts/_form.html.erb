@@ -1,0 +1,30 @@
+<%= form_for(@court) do |f| %>
+<% if @court.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@court.errors.count, "error") %> no se puede guardar esta pista:</h2>
+
+  <ul>
+    <% @court.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= f.label :name, 'Nombre de la pista' %><br>
+  <%= f.text_field :name %>
+</div>
+
+<div class="field">
+  <%= f.label :type_of_court, 'Tipo de pista' %><br>
+  <%= f.select(:type_of_court) do %>
+    <% [['Padel', 'padel'], ['Tenis', 'tenis']].each do |c| -%>
+      <%= content_tag(:option, c.first, value: c.last) %>
+    <% end %>
+  <% end %>
+</div>
+<div class="actions">
+  <%= f.submit action + ' pista' %>
+</div>
+<% end %>

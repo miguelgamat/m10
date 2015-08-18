@@ -1,0 +1,29 @@
+<h1>Listado reservas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre del club/comunidad</th>
+      <th>Pista elegida</th>
+      <th>Hora para jugar</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bookings.each do |booking| %>
+      <tr>
+      	<td><%= @courts.find_by(booking.court_id).name %></td>
+        <td><%= booking.date_time_booked %></td>
+        <td><%= link_to 'Ver más', booking %></td>
+        <td><%= link_to 'Editar', edit_club_path(booking) %></td>
+        <td><%= link_to 'Eliminar', booking, method: :delete, data: { confirm: '¿Seguro que quieres eliminarla?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Hacer una nueva reserva', new_club_path %>
+

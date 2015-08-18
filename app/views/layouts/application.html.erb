@@ -6,21 +6,16 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
+
 <body>
-<div id="top_bar">
-  <% if user_signed_in? %>
-    <p><%= link_to 'Sign out', destroy_user_session_path, method: 'DELETE' %></p>
-  <% else %>
-    <p>
-      <%= link_to 'Sign_up', new_user_registration_path %> | 
-      <%= link_to 'Sign_in', new_user_session_path %>
-    </p>
-  <% end %>
-</div>
+  <div class="container">
 
-<%= yield %>
+    <%= render partial: "layouts/sign_in"%>
 
+    <%= yield %>
+
+  </div>
 </body>
 </html>
