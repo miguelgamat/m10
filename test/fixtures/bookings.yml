@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_time_booked: 2015-08-17 14:21:05
+  user_id: 
+  court_id: 
+
+two:
+  date_time_booked: 2015-08-17 14:21:05
+  user_id: 
+  court_id: 

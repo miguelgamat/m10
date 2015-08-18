@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  padel_courts: 1
+  tennis_courts: 1
+  club_id: 
+  booking_id: 
+
+two:
+  padel_courts: 1
+  tennis_courts: 1
+  club_id: 
+  booking_id: 
