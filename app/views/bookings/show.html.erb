@@ -2,20 +2,20 @@
 
 
 <p>
-  <strong>Pista reservada: ACTUALIZAR MEDIANTE COURTS</strong>
-  <%= @booking.name %>
+  <strong>Pista reservada:</strong>
+  <%= @user_courts[0].type_of_court %>
 </p>
 
 
 <p>
   <strong>Hora de reserva:</strong>
-  <%= @booking.name %>
+  <%= @booking.date_time_booked %>
 </p>
 
 
 <p>
-  <strong>Nombre de la pista:</strong>
-  <%= @booking.name %>
+  <strong>Nombre de la comunidad o club:</strong>
+  <%= @user_courts[0].club.name %>
 </p>
 
 

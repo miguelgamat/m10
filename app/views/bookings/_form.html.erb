@@ -1,35 +1,37 @@
 
 <%= form_for(@booking) do |f| %>
-  <% if @booking.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+<% if @booking.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
 
-      <ul>
-      <% @booking.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<ul>
+		<% @booking.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 
 <h3>Hola <%=current_user.name %></h3>
-	<!-- Form to know the court -->
-	<!-- Put a if, if the user has not more than 1 club -->
+<!-- Form to know the court -->
+<!-- Put a if, if the user has not more than 1 club -->
 
-  	<div class="field">
-	  <%= f.label :court_id, 'Elige la pista' %><br>
-	  <%= f.select(:court_id) do %>
-	    <% [@user_courts].each do |c| -%>
-	      <%= content_tag(:option, c.first, value: c.last) %>
-	    <% end %>
-	  <% end %>
-	</div>
+<div class="field">
+	<%= f.label :court_id, 'Elige la pista' %><br>
+	<%= f.select(:court_id) do %>
+	<% @user_courts.each do |c| -%>
+	<%= content_tag(:option, c.type_of_court + " " + c.club.name, value: c.id) %>
+	<% end %>
+	<% end %>
+</div>
 
-  	<div class="field">
-	  <%= f.label :date_time_booked, 'Elije la fecha' %><br>
-	  <%= f.datetime_select(:date_time_booked) %>
- 	</div>
+<div class="field">
+	<%= f.label :date_time_booked, 'Elije la fecha' %><br>
+	<%= f.datetime_select(:date_time_booked) %>
+</div>
 
-
+<div class="actions">
+	<%= f.submit action + ' pista' %>
+</div>
 <% end %>
 

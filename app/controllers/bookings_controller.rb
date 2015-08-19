@@ -7,13 +7,12 @@ class BookingsController < ApplicationController
 
 	def show
 		@booking = Booking.find(params[:id])
+		@user_courts = current_user.courts
 	end
 
 	def new
 		@booking = Booking.new
-		@clubs = Club.all
-		@user_clubs = current_user.clubs.map {|club| [club.name, club.id]}
-		@user_courts = current_user.courts.map {|court| [court.name, court.id]}
+		@user_courts = current_user.courts
 	end
 
 
@@ -33,7 +32,7 @@ class BookingsController < ApplicationController
 		@booking = Booking.find(params[:id])
 		@booking.destroy
 		respond_to do |format|
-			format.html { redirect_to courts_url, notice: 'Pista eliminada satisfactoriamente.' }
+			format.html { redirect_to bookings_url, notice: 'Pista eliminada satisfactoriamente.' }
     	end
 	end
 
@@ -55,7 +54,7 @@ class BookingsController < ApplicationController
 	private
 
 	def booking_params
-		params.require(:booking).permit(:name, :type_of_court)
+		params.require(:booking).permit(:name, :type_of_court, :date_time_booked)
 	end
 
 end
