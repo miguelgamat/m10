@@ -29,6 +29,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Faker
 gem 'faker'
 
+# Pry
+gem 'pry-rails'
+
 # Devise
 gem 'devise'
 

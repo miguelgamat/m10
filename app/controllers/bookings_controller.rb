@@ -11,7 +11,11 @@ class BookingsController < ApplicationController
 
 	def new
 		@booking = Booking.new
+		@clubs = Club.all
+		@user_clubs = current_user.clubs.map {|club| [club.name, club.id]}
+		@user_courts = current_user.courts.map {|court| [court.name, court.id]}
 	end
+
 
 	def create
 		@booking = Booking.new(booking_params)
@@ -55,3 +59,13 @@ class BookingsController < ApplicationController
 	end
 
 end
+
+
+ #  	<div class="field">
+	#   <%= f.label :club_id, 'Elige tu club' %><br>
+	#   <%= f.select(:club_id) do %>
+	#     <% [@user_clubs].each do |c| -%>
+	#       <%= content_tag(:option, c.first, value: c.last) %>
+	#     <% end %>
+	#   <% end %>
+	# </div>

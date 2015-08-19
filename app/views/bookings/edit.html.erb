@@ -1,1 +1,8 @@
-edit.html.erb
+<p id="notice"><%= notice %></p>
+
+<h2>Editar pista</h2>
+
+<%= render partial: 'form', locals: {action: 'Editar'} %>
+
+<%= link_to 'Mostrar', @booking %> |
+<%= link_to 'Volver', bookings_path %>

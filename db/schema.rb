@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20150818152338) do
 
   create_table "bookings", force: :cascade do |t|
     t.datetime "date_time_booked"
-    t.integer  "user_id"Booking.create(date_time_booked:"2012-01-12 12:12:12", user_id: 2, court_id: 1, created_at: nil, updated_at: nil
+    t.integer  "user_id"
     t.integer  "court_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false

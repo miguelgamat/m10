@@ -13,7 +13,8 @@
   <tbody>
     <% @bookings.each do |booking| %>
       <tr>
-      	<td><%= @courts.find_by(booking.court_id).name %></td>
+      	<td><%= @courts.find_by(id: booking.court_id).name %></td>
+        <td><%= booking.court_id %></td>
         <td><%= booking.date_time_booked %></td>
         <td><%= link_to 'Ver más', booking %></td>
         <td><%= link_to 'Editar', edit_club_path(booking) %></td>
@@ -25,5 +26,5 @@
 
 <br>
 
-<%= link_to 'Hacer una nueva reserva', new_club_path %>
+<%= link_to 'Hacer una nueva reserva', new_booking_path %>
 

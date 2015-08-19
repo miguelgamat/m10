@@ -1,1 +1,23 @@
-show.index.erb
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Pista reservada: ACTUALIZAR MEDIANTE COURTS</strong>
+  <%= @booking.name %>
+</p>
+
+
+<p>
+  <strong>Hora de reserva:</strong>
+  <%= @booking.name %>
+</p>
+
+
+<p>
+  <strong>Nombre de la pista:</strong>
+  <%= @booking.name %>
+</p>
+
+
+<%= link_to 'Editar', edit_booking_path(@booking) %> |
+<%= link_to 'Volver', bookings_path %>

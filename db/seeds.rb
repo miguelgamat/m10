@@ -19,4 +19,6 @@ password = Faker::Internet.password(8)
 User.create( name: Faker::Name.name,  email: Faker::Internet.email, password: password , password_confirmation: password)
 end
 
-
+10.times do
+Court.create name: Faker::Team.name, club_id: 1, type_of_court: "padel"
+end
