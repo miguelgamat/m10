@@ -10,6 +10,22 @@
 </head>
 
 <body>
+  <div class="header-background">
+    <div class="container">
+      <header class="navbar navbar-inverse centered">
+      <%= link_to image_tag("logo_M10_w.png", :alt => "rss feed"), '/', id: "logo" %>
+      <div class="main-menu">
+        <nav>
+          <ul class="nav navbar-nav navbar-left ">
+            <li><%= link_to "Home",   '#' %></li>
+            <li><%= link_to "Help",   '#' %></li>
+            <li><%= link_to "Log in", '#' %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  </div>
+  </div>
   <div class="container">
 
     <%= render partial: "layouts/sign_in"%>
