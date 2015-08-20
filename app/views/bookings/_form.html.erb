@@ -9,10 +9,9 @@
 		<li><%= message %></li>
 		<% end %>
 	</ul>
-</div>
+</div> 
 <% end %>
 
-<h3>Hola <%=current_user.name %></h3>
 <!-- Form to know the court -->
 <!-- Put a if, if the user has not more than 1 club -->
 
@@ -20,8 +19,8 @@
 	<%= f.label :court_id, 'Elige la pista' %><br>
 	<%= f.select(:court_id) do %>
 	<% @user_courts.each do |c| -%>
-	<%= content_tag(:option, c.type_of_court + " " + c.club.name, value: c.id) %>
-	<% end %>
+	<%= content_tag(:option, c.type_of_court.capitalize + " " + c.club.name, value: c.id) %>
+		<% end %>
 	<% end %>
 </div>
 

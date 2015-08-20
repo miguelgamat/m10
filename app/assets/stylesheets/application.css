@@ -1,4 +1,9 @@
+/*
 
+*= require_tree .
+*= require_self
+
+*/
 .main-menu-left {
 	padding-left: 200px;
 	float: left;

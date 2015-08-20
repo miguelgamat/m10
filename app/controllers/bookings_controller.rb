@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
 
 	def new
 		@booking = Booking.new
+		courts = Court.all
 		@user_courts = current_user.courts
 	end
 
@@ -49,6 +50,7 @@ class BookingsController < ApplicationController
 
 	def edit
 		@booking = Booking.find(params[:id])
+		@user_courts = current_user.courts
 	end
 
 	private
@@ -59,12 +61,3 @@ class BookingsController < ApplicationController
 
 end
 
-
- #  	<div class="field">
-	#   <%= f.label :club_id, 'Elige tu club' %><br>
-	#   <%= f.select(:club_id) do %>
-	#     <% [@user_clubs].each do |c| -%>
-	#       <%= content_tag(:option, c.first, value: c.last) %>
-	#     <% end %>
-	#   <% end %>
-	# </div>

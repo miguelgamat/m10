@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>M10 - Web app for booking tennis and padel courts</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <title>M10 - Applicación web para reservar pistas de deportes</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -17,18 +17,23 @@
       <div class="main-menu">
         <nav>
           <ul class="nav navbar-nav navbar-left ">
-            <li><%= link_to "Home",   '#' %></li>
-            <li><%= link_to "Help",   '#' %></li>
-            <li><%= link_to "Log in", '#' %></li>
-          </ul>
+            <li><%= link_to "Home",   '/' %></li>
+            <li><%= link_to "Reservas",   '/bookings' %></li>
+            <li><%= link_to "Faqs",   '#' %></li>
+            <% if user_signed_in? %>
+            <li><%= link_to 'Salir', destroy_user_session_path, method: 'DELETE' %></li>
+          <% else %>
+            <li><%= link_to 'Registrar (comunidad/club)', new_user_registration_path %></li><li>
+              <%= link_to 'Acceder', new_user_session_path %>
+              </li>
+          <% end %> 
+        </ul>
         </nav>
       </div>
     </header>
   </div>
   </div>
   <div class="container">
-
-    <%= render partial: "layouts/sign_in"%>
 
     <%= yield %>
 
