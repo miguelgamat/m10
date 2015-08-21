@@ -7,7 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-
 Club.create name: 'Parque clavero I', description: 'En Parque Clavero la pista de tenis y de padel tienen luz, además de piscina y otras instalaciones de ocio.'
 Club.create name: 'Club El Limonar', description: 'El el Club El Limonar tienes a tu disposición muchas pistas de tenis y de padel.'
 Club.create name: 'El Candado', description: 'Club de deporte El Candado, un club deportivo con excelentes instalaciones en la Urbanización El Cadando.'
@@ -19,6 +18,26 @@ password = Faker::Internet.password(8)
 User.create( name: Faker::Name.name,  email: Faker::Internet.email, password: password , password_confirmation: password)
 end
 
-10.times do
-Court.create name: Faker::Team.name, club_id: 1, type_of_court: "padel"
+3.times do
+Court.create name: Faker::Team.name, club_id: 1, type_of_court: "Padel"
 end
+
+3.times do
+Court.create name: Faker::Team.name, club_id: 2, type_of_court: "Tenis"
+end
+
+User.create name: "Miguel", email: "miguelgamat@gmail.com", password: "holahola", password_confirmation: "holahola"
+
+Booking.create date_time_booked: 12, user_id: 1, court_id: 1
+Booking.create date_time_booked: 11, user_id: 2, court_id: 2
+Booking.create date_time_booked: 3, user_id: 3, court_id: 1
+Booking.create date_time_booked: 1, user_id: 4, court_id: 2
+Booking.create date_time_booked: 7, user_id: 1, court_id: 2
+
+
+Membership.create club_id: 1, user_id: 1
+Membership.create club_id: 2, user_id: 2
+Membership.create club_id: 2, user_id: 3
+Membership.create club_id: 2, user_id: 4
+Membership.create club_id: 1, user_id: 21
+

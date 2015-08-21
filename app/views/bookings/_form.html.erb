@@ -25,9 +25,10 @@
 </div>
 
 <div class="field">
-	<%= f.label :date_time_booked, 'Elije la fecha' %><br>
-	<%= f.datetime_select(:date_time_booked) %>
+	<%= f.label :date_booked, 'Elije la fecha' %><br>
+	<%= f.date_select(:date_booked) %>
 </div>
+
 
 <div class="actions">
 	<%= f.submit action + ' pista' %>

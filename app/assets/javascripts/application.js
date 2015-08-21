@@ -13,3 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require_self
+
+$('.new_booking').submit(function(event){
+	event.preventDefault();
+	var data = $(this).serialize();
+	$.get('/get_hours', data, function(hours){
+			console.log(hours);
+		})
+})

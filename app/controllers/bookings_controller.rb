@@ -10,9 +10,12 @@ class BookingsController < ApplicationController
 		@user_courts = current_user.courts
 	end
 
+	def show_time
+		render json: {status: "ok"}
+	end
+
 	def new
 		@booking = Booking.new
-		courts = Court.all
 		@user_courts = current_user.courts
 	end
 
@@ -56,8 +59,21 @@ class BookingsController < ApplicationController
 	private
 
 	def booking_params
-		params.require(:booking).permit(:name, :type_of_court, :date_time_booked)
+		params.require(:booking).permit(:name, :type_of_court, :date_booked, :time_booked, :court_id)
 	end
 
 end
+
+
+# <!-- Time for the booking -->
+# <% if @court %>
+# 	<div class="field">
+# 		<%= f.label :date_time_booked, 'Elige la fecha' %><br>
+# 		<%= f.select(:date_time_booked) do %>
+# 		<% Booking.show_availability(:court_id).each do |availability, key| -%>
+# 		<%= content_tag(:option, availability.key , value: c.id) %>
+# 			<% end %>
+# 		<% end %>
+# 	</div>
+# <% end %>
 

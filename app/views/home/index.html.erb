@@ -1,20 +1,11 @@
+
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
-
-	<script src="js/modernizr.js"></script> <!-- Modernizr -->
-	<%= stylesheet_link_tag    'application', media: 'all' %>
-  	<%= javascript_include_tag 'application' %>
-
+  	
 	<title>Hero Slideshow</title>
 </head>
 <body>
-	<%= render "slider" %>
-	
 	<header class="cd-header">
 		<div id="cd-logo"><a href="#0"><img src="assets/cd-logo.svg" alt="Logo"></a></div>
 
@@ -27,6 +18,7 @@
 		</nav> <!-- .cd-primary-nav -->
 	</header>
 
+<%= render partial: 'slider' %>
 
 	<main class="cd-main-content">
 		<p>
@@ -39,7 +31,5 @@
 		</p>
 	</main> <!-- .cd-main-content -->
 	
-<script src="js/jquery-2.1.1.js"></script>
-<script src="js/main.js"></script> <!-- Resource jQuery -->
 </body>
 </html>

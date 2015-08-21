@@ -1,22 +1,27 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>M10 - Applicación web para reservar pistas de deportes</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
+  
   <%= csrf_meta_tags %>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+
 </head>
 
 <body>
   <div class="header-background">
-    <div class="container">
+    <div class="container-fluid">
       <header class="navbar navbar-inverse centered">
       <%= link_to image_tag("logo_M10_w.png", :alt => "rss feed"), '/', id: "logo" %>
       <div class="main-menu">
         <nav>
-          <ul class="nav navbar-nav navbar-left ">
+          <ul class="cd-primary-nav">
             <li><%= link_to "Home",   '/' %></li>
             <li><%= link_to "Reservas",   '/bookings' %></li>
             <li><%= link_to "Faqs",   '#' %></li>
@@ -33,10 +38,11 @@
     </header>
   </div>
   </div>
-  <div class="container">
+  <div class="container-fluid">
 
     <%= yield %>
 
   </div>
+  <%= javascript_include_tag 'application' %>
 </body>
 </html>
