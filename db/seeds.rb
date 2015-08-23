@@ -28,11 +28,11 @@ end
 
 User.create name: "Miguel", email: "miguelgamat@gmail.com", password: "holahola", password_confirmation: "holahola"
 
-Booking.create date_time_booked: 12, user_id: 1, court_id: 1
-Booking.create date_time_booked: 11, user_id: 2, court_id: 2
-Booking.create date_time_booked: 3, user_id: 3, court_id: 1
-Booking.create date_time_booked: 1, user_id: 4, court_id: 2
-Booking.create date_time_booked: 7, user_id: 1, court_id: 2
+Booking.create date_booked: 12, user_id: 1, court_id: 1
+Booking.create date_booked: 11, user_id: 2, court_id: 2
+Booking.create date_booked: 3, user_id: 3, court_id: 1
+Booking.create date_booked: 1, user_id: 4, court_id: 2
+Booking.create date_booked: 7, user_id: 1, court_id: 2
 
 
 Membership.create club_id: 1, user_id: 1

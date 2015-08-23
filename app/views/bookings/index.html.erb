@@ -16,7 +16,7 @@
       <tr>
         <!-- Poner el nombre de la pista -->
         <td><%= booking.user.name if booking.user %></td>
-        <td><%= booking.date_time_booked %></td>
+        <td><%= booking.date_booked %></td>
         <td><%= link_to 'Ver más', booking %></td>
         <td><%= link_to 'Editar', edit_booking_path(booking) %></td>
         <td><%= link_to 'Eliminar', booking, method: :delete, data: { confirm: '¿Seguro que quieres eliminarla?' } %></td>

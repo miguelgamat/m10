@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources:courts
   resources:bookings
   resources:memberships
+  
   get 'get_hours' => 'bookings#show_time'
 
 end

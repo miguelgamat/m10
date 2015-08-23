@@ -16,7 +16,7 @@
 <!-- Put a if, if the user has not more than 1 club -->
 
 <div class="field">
-	<%= f.label :court_id, 'Elige la pista' %><br>
+	<%= f.label :court_id, 'Elige la pista', :class => 'court_id' %><br>
 	<%= f.select(:court_id) do %>
 	<% @user_courts.each do |c| -%>
 	<%= content_tag(:option, c.type_of_court.capitalize + " " + c.club.name, value: c.id) %>
@@ -25,13 +25,21 @@
 </div>
 
 <div class="field">
-	<%= f.label :date_booked, 'Elije la fecha' %><br>
+	<%= f.label :date_booked, 'Elije la fecha', :class => 'date_booked' %><br>
 	<%= f.date_select(:date_booked) %>
 </div>
 
+  <button class="js-time-available">Mostrar horas disponibles</button>
 
-<div class="actions">
+  <ul class="js-time-available-buttons"></ul>
+
+
+<!-- When submit is press, it automatically render to the create page -->
+
+<!-- <div class="actions">
 	<%= f.submit action + ' pista' %>
 </div>
+ -->
+
 <% end %>
 

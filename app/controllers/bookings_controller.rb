@@ -1,3 +1,6 @@
+require 'json'
+require 'date'
+
 class BookingsController < ApplicationController
 	
 	def index
@@ -10,15 +13,16 @@ class BookingsController < ApplicationController
 		@user_courts = current_user.courts
 	end
 
-	def show_time
-		render json: {status: "ok"}
+	def show_time 
+		date = Date.new(params[:booking]["date_booked(1i)"].to_i,params[:booking]["date_booked(2i)"].to_i,params[:booking]["date_booked(3i)"].to_i )
+		booking = Booking.court_availability(params[:booking][:court_id], params[:booking][:date_booked])
+		render json: booking
 	end
 
 	def new
 		@booking = Booking.new
 		@user_courts = current_user.courts
 	end
-
 
 	def create
 		@booking = Booking.new(booking_params)
@@ -68,8 +72,8 @@ end
 # <!-- Time for the booking -->
 # <% if @court %>
 # 	<div class="field">
-# 		<%= f.label :date_time_booked, 'Elige la fecha' %><br>
-# 		<%= f.select(:date_time_booked) do %>
+# 		<%= f.label :date_booked, 'Elige la fecha' %><br>
+# 		<%= f.select(:date_booked) do %>
 # 		<% Booking.show_availability(:court_id).each do |availability, key| -%>
 # 		<%= content_tag(:option, availability.key , value: c.id) %>
 # 			<% end %>
