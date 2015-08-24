@@ -29,10 +29,16 @@
 	<%= f.date_select(:date_booked) %>
 </div>
 
-  <button class="js-time-available">Mostrar horas disponibles</button>
+<div class="field" hidden>
+	<%= f.hidden_field :time_booked %>
+	<%= f.label :time_booked, 'Elije la hora', :class => 'time_booked' %><br>
+	<%= f.text_field :time_booked, id: 'time_for_booking' %>
+</div>
 
-  <ul class="js-time-available-buttons"></ul>
-
+<div class="field">
+	<button id="js-time-available">Mostrar horas disponibles</button>
+	<ul class="list-time-available"></ul>
+</div>
 
 <!-- When submit is press, it automatically render to the create page -->
 
@@ -40,6 +46,5 @@
 	<%= f.submit action + ' pista' %>
 </div>
  -->
-
 <% end %>
 

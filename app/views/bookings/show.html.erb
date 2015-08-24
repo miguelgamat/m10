@@ -18,6 +18,12 @@
   <%= @user_courts[0].club.name %>
 </p>
 
+<p>
+  <strong>Hora reservada: CAMBIAR A FORMATO HORA</strong>
+  <%= @booking.time_booked %>
+</p>
+
+
 
 <%= link_to 'Editar', edit_booking_path(@booking) %> |
 <%= link_to 'Volver', bookings_path %>

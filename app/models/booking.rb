@@ -17,7 +17,7 @@ class Booking < ActiveRecord::Base
       all_availabilities.delete(booking.time_booked.to_i)
       end
     end
-      all_availabilities
+    all_availabilities
  end
 
 

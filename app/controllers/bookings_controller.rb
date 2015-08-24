@@ -13,10 +13,10 @@ class BookingsController < ApplicationController
 		@user_courts = current_user.courts
 	end
 
-	def show_time 
+	def show_time
 		date = Date.new(params[:booking]["date_booked(1i)"].to_i,params[:booking]["date_booked(2i)"].to_i,params[:booking]["date_booked(3i)"].to_i )
-		booking = Booking.court_availability(params[:booking][:court_id], params[:booking][:date_booked])
-		render json: booking
+		@booking = Booking.court_availability(params[:booking][:court_id], date)
+		render json: @booking
 	end
 
 	def new

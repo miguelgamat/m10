@@ -32,31 +32,60 @@
 
 
 function fetchTimeAvailable (event) {
-	event.preventDefault();
- console.debug('SUBMITTED');
-
- var data = $(this).serialize();
- console.log(data)
- var request = $.get('/get_hours', data)
+	 event.preventDefault();
+   console.debug('SUBMITTED');
+    $('.list-time-available').empty();
 
 
- function handleTimeAvailable (hours) {
-   console.log(hours)
-   var html = "";
-   for (var i = 1; i < 14; i++){
-    html += ['<li><button>'+ hours[i]+'</button></li>'];
-  }
-  $('.js-time-available-buttons').append(html);
+   var data = $('.new_booking').serialize();
+   console.log(data)
+   var request = $.get('/get_hours', data);
+
+   function handleTimeAvailable (hours) {
+      console.log(hours)
+      var html = "";
+
+      for (var i = 1; i < 14; i++){
+        if(hours[i]){ 
+          html += ['<li><button type="checkbox" class="submit-time" value='+i+'>' + hours[i] + '</button></li>'];
+        };
+      }
+
+    $('.list-time-available').append(html);
+  };
+
+  function handleError (err1, err2, err3) {
+    console.error('OH NO!!', err1, err2, err3);
+  };
+
+  request.done(handleTimeAvailable);
+  request.fail(handleError);
 };
 
-function handleError (err1, err2, err3) {
-  console.error('OH NO!!', err1, err2, err3);
+function submit(event) {
+  event.preventDefault();
+  console.log('Eyy Woman!')
+
+  $(this.form).submit();
+
+   // var data = $(this).serialize();
+   // console.log(data)
+   // var request = $.post('/create', data)
 };
 
-request.done(handleTimeAvailable);
-request.fail(handleError);
-};
+$('.new_booking').on('click','#js-time-available', fetchTimeAvailable);
 
-$('.new_booking').on('click', fetchTimeAvailable);
 
-// $('.new_booking').submit(function(event)
+// $('.new_booking').on('click','.submit-time',submit);
+
+$('.list-time-available').on('click','.submit-time', function(event){
+  // event.preventDefault();
+
+// Add the value of the time to a field box
+  $('#time_for_booking').val($(this).val());
+});
+
+
+// $(".new_booking").
+
+// $('.new_booking').submit(fetchTimeAvailable)
