@@ -1,3 +1,5 @@
+<% if current_user.admin %>
+
 <p id="notice"><%= notice %></p>
 
 <h2>Nuevo club o Comunidad de vecinos</h2>
@@ -6,3 +8,4 @@
 
 <%= link_to 'Volver', clubs_path %>
 
+<% end %>

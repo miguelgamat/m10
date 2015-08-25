@@ -1,15 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Id:</strong>
-  <%= @court.id %>
-</p>
+ 
+ <% if @court.name %>
+	<p>
+  		<strong>Nombre de la pista:</strong>
+  		<%= @court.name %>
+	</p>
+ <% end %>
 
 <p>
   <strong>Tipo de pista:</strong>
-  <%= @court.type_of_court %>
+  <%= @court.type_of_court.capitalize %>
 </p>
 
 
+
+<% if current_user.admin && current_user.sign_in_count = 1 %>
+<button><%= link_to 'Añadir pistas', new_court_path %></button><br>
 <%= link_to 'Editar', edit_court_path(@court) %> |
+<% end %>
 <%= link_to 'Volver', courts_path %>

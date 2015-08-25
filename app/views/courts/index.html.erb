@@ -1,5 +1,8 @@
 <h1>Listado de pistas</h1>
 
+<% if current_user.admin %>
+<!-- Admin -->
+
 <table>
   <thead>
     <tr>
@@ -10,7 +13,7 @@
   </thead>
 
   <tbody>
-    <% @courts.each do |court| %>
+    <% @current_user_courts.each do |court| %>
       <tr>
         <td><%= court.name %></td>
         <td><%= court.type_of_court %></td>
@@ -26,3 +29,29 @@
 
 <%= link_to 'Añadir nueva pista', new_court_path %>
 
+<!-- User -->
+<% else %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Tipo de pista</th>      
+      <th colspan="10"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courts.each do |court| %>
+      <tr>
+        <td><%= court.name %></td>
+        <td><%= court.type_of_court %></td>
+        <td><%= link_to 'Ver más', court %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% end %>

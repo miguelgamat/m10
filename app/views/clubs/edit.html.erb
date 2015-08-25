@@ -1,8 +1,12 @@
+<% if current_user.admin %>
+
 <p id="notice"><%= notice %></p>
 
-<h2>Editar pista</h2>
+<h2>Editar club</h2>
 
 <%= render partial: 'form', locals: {action: 'Editar'} %>
 
 <%= link_to 'Mostrar', @club %> |
 <%= link_to 'Volver', clubs_path %>
+
+<% end %>

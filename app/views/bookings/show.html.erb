@@ -1,28 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 
+<h3>
+	<%= @booking.court.club.name %>
+</h3>
+
 <p>
   <strong>Pista reservada:</strong>
-  <%= @user_courts[0].type_of_court %>
+  <%= @booking.court.type_of_court %>
 </p>
-
 
 <p>
   <strong>Fecha de reserva:</strong>
   <%= @booking.date_booked %>
 </p>
 
-
+<% if @booking.court.name %>
 <p>
-  <strong>Nombre de la comunidad o club:</strong>
-  <%= @user_courts[0].club.name %>
+  <strong>Nombre de la pista:</strong>
+  <%= @booking.court.name %>
 </p>
+<% end %>
 
 <p>
   <strong>Hora reservada: CAMBIAR A FORMATO HORA</strong>
   <%= @booking.time_booked %>
 </p>
-
 
 
 <%= link_to 'Editar', edit_booking_path(@booking) %> |

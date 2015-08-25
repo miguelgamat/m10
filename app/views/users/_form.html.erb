@@ -1,3 +1,4 @@
+
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -11,11 +12,8 @@
     </div>
   <% end %>
 
+<p> Editar informaión personal</p>
 
-    <div class="field">
-    <%= f.label :description, 'Sobre ti' %><br>
-    <%= f.text_area :description %>
-  </div>
   <div class="field">
     <%= f.label :name, 'Nombre' %><br>
     <%= f.text_field :name %>
@@ -28,6 +26,7 @@
     <%= f.label :email, 'Correo Electrónico' %><br>
     <%= f.text_field :email %>
   </div>
+
   <div class="field">
     <%= f.label :direction, 'Dirección postal' %><br>
     <%= f.text_field :direction %>
@@ -35,6 +34,11 @@
   <div class="field">
     <%= f.label :number_of_street, 'Número de calle' %><br>
     <%= f.text_field :number_of_street %>
+  </div>
+
+    <div class="field">
+    <%= f.label :description, 'Sobre ti' %><br>
+    <%= f.text_area :description %>
   </div>
   <div class="field">
     <%= f.label :level, 'Nivel de juego' %><br>

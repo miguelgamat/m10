@@ -1,0 +1,136 @@
+
+<%= form_for(@booking) do |f| %>
+<% if @booking.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+	<ul>
+		<% @booking.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+</div> 
+<% end %>
+
+<!-- Admin -->
+<% if current_user.admin %>
+
+<p>
+  <strong>Pista reservada:</strong>
+  <%= @user_courts[0].type_of_court %>
+</p>
+<p>
+  <strong>Fecha de reserva:</strong>
+  <%= @booking.date_booked %>
+</p>
+<p>
+  <strong>Nombre de la comunidad o club:</strong>
+  <%= @user_courts[0].club.name %>
+</p>
+<p>
+  <strong>Hora reservada: CAMBIAR A FORMATO HORA</strong>
+  <%= @booking.time_booked %>
+</p>
+
+<!-- Form to know the court -->
+<!-- Put a if, if the user has not more than 1 club -->
+
+<div class="field">
+	<%= f.label :court_id, 'Elige la pista', :class => 'court_id' %><br>
+	<%= f.select(:court_id) do %>
+	<% @user_courts.each do |c| -%>
+	<%= content_tag(:option, c.type_of_court.capitalize + " " + c.club.name, value: c.id) %>
+		<% end %>
+	<% end %>
+</div>
+
+<div class="field">
+	<%= f.label :date_booked, 'Elije la fecha', :class => 'date_booked' %><br>
+	<%= f.date_select(:date_booked) %>
+</div>
+
+<div class="field" hidden>
+	<%= f.hidden_field :time_booked %>
+	<%= f.label :time_booked, 'Elije la hora', :class => 'time_booked' %><br>
+	<%= f.text_field :time_booked, id: 'time_for_booking' %>
+</div>
+
+<div class="field" hidden>
+	<%= f.label :user_id %><br>
+	<%= f.text_field :user_id, :value => @user_id %>
+</div>
+
+<div class="field">
+	<button id="js-time-available">Mostrar horas disponibles</button>
+	<ul class="list-time-available"></ul>
+</div>
+
+<!-- When submit is press, it automatically render to the create page -->
+
+<!-- <div class="actions">
+	<%= f.submit action + ' pista' %>
+</div>
+ -->
+
+<% else %>
+<!-- User -->
+
+<p>
+  <strong>Pista reservada:</strong>
+  <%= @user_courts[0].type_of_court %>
+</p>
+<p>
+  <strong>Fecha de reserva:</strong>
+  <%= @booking.date_booked %>
+</p>
+<p>
+  <strong>Nombre de la comunidad o club:</strong>
+  <%= @user_courts[0].club.name %>
+</p>
+<p>
+  <strong>Hora reservada: CAMBIAR A FORMATO HORA</strong>
+  <%= @booking.time_booked %>
+</p>
+
+<!-- Form to know the court -->
+<!-- Put a if, if the user has not more than 1 club -->
+
+<div class="field">
+	<%= f.label :court_id, 'Elige la pista', :class => 'court_id' %><br>
+	<%= f.select(:court_id) do %>
+	<% @user_courts.each do |c| -%>
+	<%= content_tag(:option, c.type_of_court.capitalize + " " + c.club.name, value: c.id) %>
+		<% end %>
+	<% end %>
+</div>
+
+<div class="field">
+	<%= f.label :date_booked, 'Elije la fecha', :class => 'date_booked' %><br>
+	<%= f.date_select(:date_booked) %>
+</div>
+
+<div class="field" hidden>
+	<%= f.hidden_field :time_booked %>
+	<%= f.label :time_booked, 'Elije la hora', :class => 'time_booked' %><br>
+	<%= f.text_field :time_booked, id: 'time_for_booking' %>
+</div>
+
+<div class="field" hidden>
+	<%= f.label :user_id %><br>
+	<%= f.text_field :user_id, :value => @user_id %>
+</div>
+
+<div class="field">
+	<button id="js-time-available">Mostrar horas disponibles</button>
+	<ul class="list-time-available"></ul>
+</div>
+
+<!-- When submit is press, it automatically render to the create page -->
+
+<!-- <div class="actions">
+	<%= f.submit action + ' pista' %>
+</div>
+ -->
+<% end %>
+
+<% end %>

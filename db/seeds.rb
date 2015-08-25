@@ -38,6 +38,6 @@ Booking.create date_booked: 7, user_id: 1, court_id: 2
 Membership.create club_id: 1, user_id: 1
 Membership.create club_id: 2, user_id: 2
 Membership.create club_id: 2, user_id: 3
-Membership.create club_id: 2, user_id: 4
+Membership.create club_id: 2, user_id: 20
 Membership.create club_id: 1, user_id: 21
 

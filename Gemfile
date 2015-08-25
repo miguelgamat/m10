@@ -38,6 +38,12 @@ gem 'pry-rails'
 # Devise
 gem 'devise'
 
+# Figaro - adding sensitive data
+gem 'figaro'
+
+# Pundit
+# gem 'pundit'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -55,4 +61,3 @@ group :development, :test do
   gem 'spring'
 end
 
-gem 'pundit'

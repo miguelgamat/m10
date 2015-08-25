@@ -1,11 +1,13 @@
-<h2>Regístrate como jugador</h2>
+<h1>Registrar comunidad/club</h1>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+<h3> Primer paso</h3>
+<p>Registrarse como administrador para la aplicación de reservas</p>
   <div class="field">
     <%= f.label :name ,'Nombre' %><br />
-    <%= f.text_field :name,autofocus: true %>
+    <%= f.text_field :name, autofocus: true %>
   </div>
 
   <div data-fv-notempty="true" class="field"> 
@@ -19,14 +21,14 @@
   </div>
 
   <div class="field"> 
-    <%= f.label :number_of_street, 'Nº Calle' %><br />
-    <%= f.text_field :number_of_street %>
+    <%= f.label :zip_code, 'Código postal' %><br />
+    <%= f.text_field :zip_code %>
   </div>
-
+<!-- 
   <div class="field"> 
     <%= f.label :flat, 'Piso' %><br />
     <%= f.text_field :flat %>
-  </div>
+  </div> -->
 
 <!--   <div class="field"> 
     <%= f.label :letter_flat %><br />
@@ -38,7 +40,12 @@
     <%= f.text_field :mobile_number %>
   </div>
 
-  <div class="field">
+  <div class="field" hidden> 
+    <%= f.label :admin %><br />
+    <%= f.text_field :admin, :value => true %>
+  </div>
+
+  <div data-fv-notempty="true" class="field">
     <%= f.label :email, 'Correo electrónico' %><br />
     <%= f.email_field :email %>
   </div>
@@ -46,7 +53,7 @@
   <div class="field">
     <%= f.label :password, 'Contraseña' %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> caracteres mínimos)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
@@ -57,8 +64,8 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Registrarse" %>
+    <%= f.submit "Registrar" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+

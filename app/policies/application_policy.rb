@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user.admin? or not post.published?
+    false
   end
 
   def edit?

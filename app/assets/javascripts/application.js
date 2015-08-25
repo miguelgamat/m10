@@ -15,21 +15,6 @@
 //= require_tree .
 //= require_self
 
-// $('.new_booking').submit(function(event)
-// {
-// 	event.preventDefault();
-// 	var data = $(this).serialize();
-// 	$.get('/get_hours', data, function(hours){
-
-// 		console.log(data);
-// 		console.log(hours);
-
-// 		function printTimeAvailable(time){
-
-// 		}
-// 	})
-// })
-
 
 function fetchTimeAvailable (event) {
 	 event.preventDefault();
@@ -37,7 +22,7 @@ function fetchTimeAvailable (event) {
     $('.list-time-available').empty();
 
 
-   var data = $('.new_booking').serialize();
+   var data = $('.new_booking, .edit_booking').serialize();
    console.log(data)
    var request = $.get('/get_hours', data);
 
@@ -73,8 +58,7 @@ function submit(event) {
    // var request = $.post('/create', data)
 };
 
-$('.new_booking').on('click','#js-time-available', fetchTimeAvailable);
-
+$('.new_booking, .edit_booking').on('click','#js-time-available', fetchTimeAvailable);
 
 // $('.new_booking').on('click','.submit-time',submit);
 

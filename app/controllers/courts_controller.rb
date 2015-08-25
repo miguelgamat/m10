@@ -1,7 +1,9 @@
 class CourtsController < ApplicationController
-	
+	before_action :authenticate_user!
+
 	def index
 		@courts = Court.all
+		@current_user_courts = current_user.courts
 	end
 
 	def show
@@ -14,9 +16,11 @@ class CourtsController < ApplicationController
 
 	def create
 		@court = Court.new(court_params)
+		@user = User.all
 
 		respond_to do |format|
 			if @court.save
+				@user.courts << current_user.courts
 				format.html { redirect_to @court, notice: 'Pista creada satisfactoriamente.' }
 			else
 				format.html { render :new }

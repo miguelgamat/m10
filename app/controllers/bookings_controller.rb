@@ -2,7 +2,8 @@ require 'json'
 require 'date'
 
 class BookingsController < ApplicationController
-	
+	before_action :authenticate_user!
+
 	def index
 		@bookings = Booking.all
 		@courts = Court.all
@@ -21,6 +22,7 @@ class BookingsController < ApplicationController
 
 	def new
 		@booking = Booking.new
+		@user_id = current_user.id
 		@user_courts = current_user.courts
 	end
 
@@ -63,7 +65,7 @@ class BookingsController < ApplicationController
 	private
 
 	def booking_params
-		params.require(:booking).permit(:name, :type_of_court, :date_booked, :time_booked, :court_id)
+		params.require(:booking).permit(:name, :type_of_court, :date_booked, :time_booked, :court_id, :user_id)
 	end
 
 end
@@ -80,4 +82,3 @@ end
 # 		<% end %>
 # 	</div>
 # <% end %>
-

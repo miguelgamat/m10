@@ -3,12 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
 before_action :configure_permitted_parameters, if: :devise_controller?
 
-	include Pundit
- 	protect_from_forgery
- end
-
 protected
    		def configure_permitted_parameters
-    		devise_parameter_sanitizer.for(:sign_up) << :name
+    		devise_parameter_sanitizer.for(:sign_up) << :name << :address << :zip_code << :mobile_number << :admin <<:last_name
    		end
 end

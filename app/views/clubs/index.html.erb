@@ -1,5 +1,9 @@
 <h1>Listado de clubs</h1>
 
+<!-- Admin -->
+
+<% if current_user.admin %>
+
 <table>
   <thead>
     <tr>
@@ -26,3 +30,30 @@
 
 <%= link_to 'Crear nuevo club/comunidad de vecinos', new_club_path %>
 
+<!-- User -->
+<% else %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre del club/comunidad</th>
+      <th>Descripción</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% @current_user_clubs.each do |club| %>
+      <tr>
+        <td><%= club.name %></td>
+        <td><%= club.description %></td>
+        <td><%= link_to 'Ver más', club %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% end %>

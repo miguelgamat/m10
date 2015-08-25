@@ -10,6 +10,14 @@
   <%= @club.description %>
 </p>
 
+<% if current_user.admin && current_user.sign_in_count = 1 %>
+ <button><%= link_to 'Añadir pistas', new_court_path %></button>
+ <button><%= link_to 'Añadir usuarios', new_user_path %></button>
+  <% end %>
+  <br>
 
+
+<% if current_user.admin %> 
 <%= link_to 'Editar', edit_club_path(@club) %> |
+<% end %>
 <%= link_to 'Volver', clubs_path %>

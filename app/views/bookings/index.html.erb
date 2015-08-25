@@ -1,5 +1,9 @@
 <h1>Listado reservas</h1>
 
+<!-- Admin -->
+
+<% if current_user.admin  %>
+
 <table>
   <thead>
     <tr>
@@ -29,3 +33,38 @@
 
 <%= link_to 'Hacer una nueva reserva', new_booking_path %>
 
+<!-- User panel -->
+
+<% else %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre del club/comunidad</th>
+      <th>Pista elegida</th>
+      <th>Hora para jugar</th>
+      <th></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bookings.where(:user_id => current_user.id).each do |booking| %>
+      <tr>
+        <!-- Poner el nombre de la pista -->
+        <td><%= booking.user.name if booking.user %></td>
+        <td><%= booking.date_booked %></td>
+        <td><%= link_to 'Ver más', booking %></td>
+        <td><%= link_to 'Editar', edit_booking_path(booking) %></td>
+        <td><%= link_to 'Eliminar', booking, method: :delete, data: { confirm: '¿Seguro que quieres eliminarla?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Hacer una nueva reserva', new_booking_path %>
+
+
+<% end %>
