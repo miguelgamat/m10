@@ -1,3 +1,5 @@
+<% if current_user.admin %>
+
 
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
@@ -12,7 +14,8 @@
     </div>
   <% end %>
 
-<p> Editar informaión personal</p>
+
+<p> Añadir usuarios </p>
 
   <div class="field">
     <%= f.label :name, 'Nombre' %><br>
@@ -27,40 +30,9 @@
     <%= f.text_field :email %>
   </div>
 
-  <div class="field">
-    <%= f.label :direction, 'Dirección postal' %><br>
-    <%= f.text_field :direction %>
-  </div>
-  <div class="field">
-    <%= f.label :number_of_street, 'Número de calle' %><br>
-    <%= f.text_field :number_of_street %>
-  </div>
-
-    <div class="field">
-    <%= f.label :description, 'Sobre ti' %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :level, 'Nivel de juego' %><br>
-    <%= f.text_field :level %>
-  </div>
-  <div class="field">
-    <%= f.label :flat, 'Piso' %><br>
-    <%= f.text_field :flat %>
-  </div>
-  <div class="field">
-    <%= f.label :letter_flat, 'Letra' %><br>
-    <%= f.text_field :letter_flat %>
-  </div>
-  <div class="field">
-    <%= f.label :zip_code, 'Código postal' %><br>
-    <%= f.text_field :zip_code %>
-  </div>
-  <div class="field">
-    <%= f.label :mobile_number, 'Número móvil' %><br>
-    <%= f.text_field :mobile_number %>
-  </div>
   <div class="actions">
     <%= f.submit action + ' usuario' %>
   </div>
+<% end %>
+
 <% end %>

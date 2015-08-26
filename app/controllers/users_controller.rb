@@ -16,7 +16,6 @@ class UsersController < ApplicationController
 
 	def new
 		@user = User.new
-		@membership = Membership.new
 	end
 
 	def edit
@@ -24,14 +23,21 @@ class UsersController < ApplicationController
 	end
 
 	def create
-	# Admin can only has one membership
+	# # Admin can only has one membership
+	# 	if current_user.admin
+	# 		User.invite!(:email => params[:user][:email], :name => params[:user][:name])
+	# 		# => an invitation email will be sent to new_user@example.com			
+	# 	end
+		
 
 		@user = User.new(user_params)
 		@user.clubs << current_user.clubs[0]
 
+		binding.pry
+
 		respond_to do |format|
 			if @user.save
-				UserMailer.welcome_email(@user).deliver_now # Change the email template
+				# UserMailer.welcome_email(@user).deliver_now # Change the email template
 				format.html { redirect_to @user, notice: 'Usuario creado satisfactoriamente.' }
 			else
 				format.html { render :new }
@@ -61,6 +67,6 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
-		params.require(:user).permit(:name, :description, :direction, :level, :email, :last_name, :address, :number_of_street, :flat, :letter_flat, :zip_code, :mobile_number, )
+		params.require(:user).permit(:name, :description, :direction, :level, :email, :last_name, :address, :number_of_street, :flat, :letter_flat, :zip_code, :mobile_number, :club_id)
 	end
 end

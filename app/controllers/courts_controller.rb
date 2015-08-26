@@ -12,15 +12,17 @@ class CourtsController < ApplicationController
 
 	def new
 		@court = Court.new
+		@current_clubs = current_user.clubs
 	end
 
 	def create
 		@court = Court.new(court_params)
-		@user = User.all
+		# @user = User.all
 
 		respond_to do |format|
 			if @court.save
-				@user.courts << current_user.courts
+				# Add courts to all users
+				# @user.courts << current_user.courts
 				format.html { redirect_to @court, notice: 'Pista creada satisfactoriamente.' }
 			else
 				format.html { render :new }
@@ -54,7 +56,7 @@ class CourtsController < ApplicationController
 	private
 
 	def court_params
-		params.require(:court).permit(:name, :type_of_court)
+		params.require(:court).permit(:name, :type_of_court, :club_id)
 	end
 
 end

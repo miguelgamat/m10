@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require_tree .
 //= require_self
+//= require underscore
+//= require gmaps/google
 
 
 function fetchTimeAvailable (event) {
@@ -73,3 +75,9 @@ $('.list-time-available').on('click','.submit-time', function(event){
 // $(".new_booking").
 
 // $('.new_booking').submit(fetchTimeAvailable)
+
+// Inviting users
+// $('#createNewTextbox').append('<input type="email" id="email'+i+'" name="user[email][]" placeholder="Invitation email" required/>');
+
+
+

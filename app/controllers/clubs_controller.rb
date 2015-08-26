@@ -8,18 +8,26 @@ class ClubsController < ApplicationController
 
 	def show
 		@club = Club.find(params[:id])
+		@hash = Gmaps4rails.build_markers(@club) do |club, marker|
+		  marker.lat club.latitude
+		  marker.lng club.longitude
+		  marker.infowindow club.name
+		end
 	end
 
 	def new
 		@club = Club.new
+		@membership = Membership.new
 	end
 
 	def create
-		@Club = Club.new(club_params)
+		@club = Club.new(club_params)
 
 		respond_to do |format|
-			if @Club.save
-				format.html { redirect_to @Club, notice: 'Club/comunidad ha sido creado satisfactoriamente.' }
+			if @club.save
+				@membership = Membership.new(club_id: @club.id, user_id: current_user.id)
+				@membership.save
+				format.html { redirect_to @club, notice: 'Club/comunidad ha sido creado satisfactoriamente.' }
 			else
 				format.html { render :new }
 			end
@@ -53,6 +61,6 @@ class ClubsController < ApplicationController
 	private
 
 	def club_params
-		params.require(:club).permit(:name, :description)
+		params.require(:club).permit(:name, :description, :address, :longitude, :latitude, :image)
 	end
 end

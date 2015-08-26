@@ -24,6 +24,22 @@
     <% end %>
   <% end %>
 </div>
+
+<% if current_user.clubs.length > 1 %>
+<div class="field">
+  <%= f.label :club_id, 'Elegir club/comunidad' %><br>
+  <%= f.select(:club_id) do %>
+    <% @current_clubs.each do |c| -%>
+      <%= content_tag(:option, c.name, value: c.id) %>
+    <% end %>
+  <% end %>
+</div>
+<% else %>
+<div class="field" hidden>
+  <%= f.label :club_id %><br>
+  <%= f.text_field :club_id, :value => @current_user.clubs[0].id %>
+</div>
+<% end %>
 <div class="actions">
   <%= f.submit action + ' pista' %>
 </div>

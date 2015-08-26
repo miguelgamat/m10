@@ -17,6 +17,9 @@ gem 'coffee-rails', '~> 4.1.0'
 # Bourbon, used for Sass and the slider
 #gem 'bourbon'
 
+# Devise Invitable
+gem 'devise_invitable', '~> 1.5.2'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -32,6 +35,10 @@ gem 'bcrypt', '~> 3.1.7'
 # Faker
 gem 'faker'
 
+# Google Maps
+gem 'gmaps4rails'
+gem 'geocoder'
+
 # Pry
 gem 'pry-rails'
 
@@ -40,6 +47,9 @@ gem 'devise'
 
 # Figaro - adding sensitive data
 gem 'figaro'
+
+# Paperclip
+gem "paperclip", "~> 4.3"
 
 # Pundit
 # gem 'pundit'

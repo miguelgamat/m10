@@ -6,5 +6,11 @@ before_action :configure_permitted_parameters, if: :devise_controller?
 protected
    		def configure_permitted_parameters
     		devise_parameter_sanitizer.for(:sign_up) << :name << :address << :zip_code << :mobile_number << :admin <<:last_name
+    		  # Only add some parameters
+			  devise_parameter_sanitizer.for(:accept_invitation) do |u|
+			  	u.permit(:first_name, :last_name, :phone, :password, :password_confirmation,
+	             :invitation_token)
+			  end
+
    		end
 end
