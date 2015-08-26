@@ -9,8 +9,4 @@ class User < ActiveRecord::Base
 	has_many :clubs, :through => :memberships
 	has_many :courts, :through => :clubs
 
-	def self.invite! email
-		User.invite!({:email => email})
-	end
-
 end
