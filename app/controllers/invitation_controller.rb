@@ -6,8 +6,4 @@ class Users::InvitationsController < Devise::InvitationsController
       super
     end
   end
-
-  def create
-  	User.invite!
-  end
 end
