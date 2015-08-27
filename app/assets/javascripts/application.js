@@ -71,13 +71,15 @@ $('.list-time-available').on('click','.submit-time', function(event){
   $('#time_for_booking').val($(this).val());
 });
 
-
+var i = 1;
 // $(".new_booking").
 
 // $('.new_booking').submit(fetchTimeAvailable)
 
 // Inviting users
-// $('#createNewTextbox').append('<input type="email" id="email'+i+'" name="user[email][]" placeholder="Invitation email" required/>');
-
+function create_new(){
+$('#createNewTextbox').append('<input class="email_input" type="email" id="email'+i+'" email="user[email][]" placeholder="Email" required/><br>');
+i++;
+}
 
 

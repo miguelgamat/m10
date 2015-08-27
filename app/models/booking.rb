@@ -11,30 +11,28 @@ class Booking < ActiveRecord::Base
     numbers = (1...14).to_a
     timetable = ["9:00 - 10:00", "10:00 - 11:00","11:00 - 12:00", "12:00 - 13:00", "13:00 - 14:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00", "19:00 - 20:00", "20:00 - 21:00", "21:00 - 22:00"]
     all_availabilities = Hash[numbers.zip(timetable)]
-
+    
     dates_booked.each do |booking|
-    if booking.time_booked
-      all_availabilities.delete(booking.time_booked.to_i)
+      if booking.time_booked
+        all_availabilities.delete(booking.time_booked.to_i)
       end
     end
     all_availabilities
- end
 
+  end
 
-  # def date_availability date
-    
-  # end
+  def self.show_time_from_hash number_time
+    numbers = (1...14).to_a
+    timetable = ["9:00 - 10:00", "10:00 - 11:00","11:00 - 12:00", "12:00 - 13:00", "13:00 - 14:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00", "19:00 - 20:00", "20:00 - 21:00", "21:00 - 22:00"]
+    hash_time = Hash[numbers.zip(timetable)]
+    hash_time[number_time]
+  end
 
-  # def self.show_availability court_id
-  # 	availability = []
-  # 	court_bookings = Court.find_by(id: court_id).bookings
+  def time_restriction
+   
+  end
 
-  # 	court_bookings.each do |booking|
-  # 	if booking.date_booked
-  # 		@all_availabilities.delete(booking)
-  # 		end
-  # 	end
-  # end
-
-
+  def time_from_now_plus_one_hour
+   
+  end
 end

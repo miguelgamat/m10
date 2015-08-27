@@ -7,6 +7,7 @@
 <table>
   <thead>
     <tr>
+      <th>Imagen</th>
       <th>Nombre del club/comunidad</th>
       <th>Descripción</th>
       <th colspan="10"></th>
@@ -16,6 +17,8 @@
   <tbody>
     <% @clubs.each do |club| %>
       <tr>
+        <td><%= image_tag club.image.url(:thumb) %>
+</td>
         <td><%= club.name %></td>
         <td><%= club.description %></td>
         <td><%= link_to 'Ver más', club %></td>
@@ -29,6 +32,17 @@
 <br>
 
 <%= link_to 'Crear nuevo club/comunidad de vecinos', new_club_path %>
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+</script>
 
 <!-- User -->
 <% else %>

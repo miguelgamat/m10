@@ -26,7 +26,6 @@ end
 Court.create name: Faker::Team.name, club_id: 2, type_of_court: "Tenis"
 end
 
-User.create name: "Miguel", email: "miguelgamat@gmail.com", password: "holahola", password_confirmation: "holahola"
 
 Booking.create date_booked: 12, user_id: 1, court_id: 1
 Booking.create date_booked: 11, user_id: 2, court_id: 2
@@ -39,5 +38,5 @@ Membership.create club_id: 1, user_id: 1
 Membership.create club_id: 2, user_id: 2
 Membership.create club_id: 2, user_id: 3
 Membership.create club_id: 2, user_id: 20
-Membership.create club_id: 1, user_id: 21
+Membership.create club_id: 1, user_id: 12
 

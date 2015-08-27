@@ -39,7 +39,7 @@
 	<%= f.label :court_id, 'Elige la pista', :class => 'court_id' %><br>
 	<%= f.select(:court_id) do %>
 	<% @user_courts.each do |c| -%>
-	<%= content_tag(:option, c.type_of_court.capitalize + " " + c.club.name, value: c.id) %>
+	<%= content_tag(:option, c.type_of_court.capitalize + " - " + c.club.name, value: c.id) %>
 		<% end %>
 	<% end %>
 </div>
@@ -99,7 +99,7 @@
 	<%= f.label :court_id, 'Elige la pista', :class => 'court_id' %><br>
 	<%= f.select(:court_id) do %>
 	<% @user_courts.each do |c| -%>
-	<%= content_tag(:option, c.type_of_court.capitalize + " " + c.club.name, value: c.id) %>
+	<%= content_tag(:option, c.type_of_court.capitalize + " - " + c.club.name, value: c.id) %>
 		<% end %>
 	<% end %>
 </div>

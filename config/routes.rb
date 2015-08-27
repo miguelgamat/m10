@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   get 'home/index'
 	get '/', to: "home#index"
 
-
-  devise_for :users, controllers: { registrations: "registrations", invitations: 'devise/invitations'}
+  # Redirect from email invitation
+  # get 'users/invitation/accept/'
+  # get '/'
 
   get 'profile', to: 'user#profile'
   root to: 'users#profile'
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
   resources:courts
   resources:bookings
   resources:memberships
+
+  devise_for :users, controllers: { registrations: "registrations", invitations: 'devise/invitations'}
   
   get 'get_hours' => 'bookings#show_time'
 

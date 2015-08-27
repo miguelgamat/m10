@@ -7,7 +7,7 @@
 
 <p>
   <strong>Pista reservada:</strong>
-  <%= @booking.court.type_of_court %>
+  <%= @booking.court.type_of_court.capitalize %>
 </p>
 
 <p>
@@ -23,10 +23,10 @@
 <% end %>
 
 <p>
-  <strong>Hora reservada: CAMBIAR A FORMATO HORA</strong>
-  <%= @booking.time_booked %>
+  <strong>Hora reservada:</strong>
+  <%= @show_time_booked %>
 </p>
 
 
 <%= link_to 'Editar', edit_booking_path(@booking) %> |
-<%= link_to 'Volver', bookings_path %>
+<%= link_to 'Todas las reservas', bookings_path %>

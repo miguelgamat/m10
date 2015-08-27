@@ -1,4 +1,5 @@
-<h2><%= t 'devise.invitations.edit.header' %></h2>
+
+<h2> Cambiar contraseña </h2>
 
 <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
   <%= devise_error_messages! %>
@@ -10,5 +11,5 @@
   <p><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></p>
 
-  <p><%= f.submit t("devise.invitations.edit.submit_button") %></p>
+  <p><%= f.submit 'Cambiar contraseña' %></p>
 <% end %>

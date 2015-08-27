@@ -10,7 +10,7 @@ protected
 			  devise_parameter_sanitizer.for(:accept_invitation) do |u|
 			  	u.permit(:first_name, :last_name, :phone, :password, :password_confirmation,
 	             :invitation_token)
+        devise_parameter_sanitizer.for(:invite).concat [:club_id]
 			  end
-
    		end
 end

@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
 	def show
 		@booking = Booking.find(params[:id])
 		@user_courts = current_user.courts
+		@show_time_booked = Booking.show_time_from_hash(@booking.time_booked.to_i)
 	end
 
 	def show_time
@@ -21,18 +22,20 @@ class BookingsController < ApplicationController
 	end
 
 	def new
-		@booking = Booking.new
-		@user_id = current_user.id
-		@user_courts = current_user.courts
+			@booking = Booking.new
+			@user_id = current_user.id
+			@user_courts = current_user.courts
 	end
 
 	def create
+		date = Date.new(params[:booking]["date_booked(1i)"].to_i,params[:booking]["date_booked(2i)"].to_i,params[:booking]["date_booked(3i)"].to_i )
 		@booking = Booking.new(booking_params)
 
 		respond_to do |format|
-			if @booking.save
+			if @booking.save && date > Date.today
 				format.html { redirect_to @booking, notice: 'Pista creada satisfactoriamente.' }
 			else
+				flash.now[:alert] = 'No se puede reservar esa hora'
 				format.html { render :new }
 			end
 		end
@@ -70,15 +73,3 @@ class BookingsController < ApplicationController
 
 end
 
-
-# <!-- Time for the booking -->
-# <% if @court %>
-# 	<div class="field">
-# 		<%= f.label :date_booked, 'Elige la fecha' %><br>
-# 		<%= f.select(:date_booked) do %>
-# 		<% Booking.show_availability(:court_id).each do |availability, key| -%>
-# 		<%= content_tag(:option, availability.key , value: c.id) %>
-# 			<% end %>
-# 		<% end %>
-# 	</div>
-# <% end %>
