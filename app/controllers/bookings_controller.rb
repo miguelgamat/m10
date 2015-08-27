@@ -22,18 +22,18 @@ class BookingsController < ApplicationController
 	end
 
 	def new
-			@booking = Booking.new
-			@user_id = current_user.id
-			@user_courts = current_user.courts
+		@booking = Booking.new
+		@user_id = current_user.id
+		@user_courts = current_user.courts
 	end
 
 	def create
-		date = Date.new(params[:booking]["date_booked(1i)"].to_i,params[:booking]["date_booked(2i)"].to_i,params[:booking]["date_booked(3i)"].to_i )
 		@booking = Booking.new(booking_params)
 
 		respond_to do |format|
-			if @booking.save && date > Date.today
+			if @booking.save
 				format.html { redirect_to @booking, notice: 'Pista creada satisfactoriamente.' }
+				UserMailer.new_booking(@booking).deliver_now
 			else
 				flash.now[:alert] = 'No se puede reservar esa hora'
 				format.html { render :new }
@@ -44,6 +44,7 @@ class BookingsController < ApplicationController
 	def destroy
 		@booking = Booking.find(params[:id])
 		@booking.destroy
+		UserMailer.delete_booking(@booking).deliver_now
 		respond_to do |format|
 			format.html { redirect_to bookings_url, notice: 'Pista eliminada satisfactoriamente.' }
     	end
@@ -54,6 +55,7 @@ class BookingsController < ApplicationController
 		respond_to do |format|
 			if @booking.update(booking_params)
 				format.html { redirect_to @booking, notice: 'Pista modificada satisfactoriamente.' }
+				UserMailer.update_booking(@booking).deliver_now
 			else
 				format.html { render :edit }
 			end
@@ -63,6 +65,8 @@ class BookingsController < ApplicationController
 	def edit
 		@booking = Booking.find(params[:id])
 		@user_courts = current_user.courts
+		@user_id = current_user.id
+		@show_time_booked = Booking.show_time_from_hash(@booking.time_booked.to_i)
 	end
 
 	private
